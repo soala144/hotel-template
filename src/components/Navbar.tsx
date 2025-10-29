@@ -42,7 +42,9 @@ const Navbar = () => {
           <motion.div whileHover={{ scale: 1.05 }} className="shrink-0">
             <Link
               href="/"
-              className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent"
+              className={`text-2xl lg:text-3xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent ${
+                !scrolled && "text-white"
+              }`}
             >
               Azure Haven
             </Link>
@@ -50,7 +52,7 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+            <div className="ml-10 flex items-center gap-3 justify-between">
               {navItems.map((item) => (
                 <motion.div
                   key={item.name}
@@ -59,7 +61,11 @@ const Navbar = () => {
                 >
                   <Link
                     href={item.href}
-                    className="text-slate-700 hover:text-amber-600 px-3 py-2 text-sm font-medium transition-colors duration-200 relative group"
+                    className={` px-3 py-2 text-sm font-medium transition-colors duration-200 relative group ${
+                      scrolled
+                        ? "text-slate-700 hover:text-amber-600"
+                        : "text-white"
+                    }`}
                   >
                     {item.name}
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-500 to-yellow-500 group-hover:w-full transition-all duration-300"></span>
@@ -74,7 +80,7 @@ const Navbar = () => {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
                 asChild
-                className="bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-white shadow-modern hover:shadow-modern-lg transition-all duration-300"
+                className="bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-white shadow-modern hover:shadow-modern-lg transition-all duration-300 p-3"
               >
                 <Link href="/booking">Book Now</Link>
               </Button>
